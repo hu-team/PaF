@@ -29,21 +29,13 @@ public class View extends Application {
         menuBar.getMenus().addAll(menuFile,menuFile1,menuFile2);
         return menuBar;
     }
-
-    public HBox getMenuHBOX() {
-        HBox box = new HBox();
-        box.getChildren().addAll(this.MenuBar());
-        //box.setAlignment(Pos.CENTER);
-        return box;
-    }
-
-
+    
     public void start(Stage primaryStage) throws Exception {
 
         primaryStage.setTitle("PaF");
 
         BorderPane root = new BorderPane();
-        root.setTop(this.getMenuHBOX());
+        root.setTop(this.MenuBar());
 
         Scene scene = new Scene(root, 800,600);
         primaryStage.setScene(scene);
