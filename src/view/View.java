@@ -1,85 +1,45 @@
 package view;
 
-
-import com.sun.tools.javac.comp.Check;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckMenuItem;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class View extends Application {
-    EditorView editorview = new EditorView();
-    SelectorView selectorview = new SelectorView();
+    ViewImpl editorview = new EditorView();
+    ViewImpl selectorview = new SelectorView();
+    List<ViewImpl> lov = new ArrayList<ViewImpl>();
+    HBox centerbox = new HBox();
     BorderPane root = new BorderPane();
 
     public static void main(String args[]) {
         Application.launch(args);
     }
 
- /*   public MenuBar MenuBar() {
-        MenuBar menuBar = new MenuBar();
 
-        // File tab
-        Menu menuFile = new Menu("File");
-        MenuItem menuItemA = new MenuItem("Save As");
-        menuFile.getItems().add(menuItemA);
-
-        // View tab
-        Menu menuFile1 = new Menu("View");
-        CheckMenuItem menuItemB = new CheckMenuItem("Editor");
-        CheckMenuItem menuItemC = new CheckMenuItem("Selector");
-        // Defaults for checked menuItem (Editor is default)
-        menuItemB.setSelected(true);
-        menuItemC.setSelected(false);
-        menuFile1.getItems().addAll(menuItemB, menuItemC);
-
-        menuBar.getMenus().addAll(menuFile,menuFile1);
-
-        menuItemB.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent actionEvent) {
-                menuItemB.setSelected(true);
-                menuItemC.setSelected(false);
-
-                System.out.println("yo editor");
-                root.setCenter(editorview.items());
-
-
-            }
-        });
-
-        menuItemC.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent actionEvent) {
-                menuItemB.setSelected(false);
-                menuItemC.setSelected(true);
-
-                System.out.println("yo selector");
-                root.setCenter(selectorview.items());
-
-
-            }
-        });
-
-        return menuBar;
+    public HBox centerapp() {
+        centerbox.getChildren().addAll(editorview.items(), selectorview.items());
+        return centerbox;
     }
-    */
 
     public void start(Stage primaryStage) throws Exception {
 
         primaryStage.setTitle("PaF");
 
+        lov.add(editorview);
+        lov.add(selectorview);
+        
+        selectorview.hide();
 
-        root.setTop(MenuBarView.getMenuBarView());
-        root.setCenter(selectorview.items());
+        root.setTop(MenuBarView.getMenuBarView(lov));
+        root.setCenter(centerapp());
 
         Scene scene = new Scene(root, 800,600);
         primaryStage.setScene(scene);

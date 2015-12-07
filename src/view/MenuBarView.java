@@ -7,16 +7,15 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
-/**
- * Created by maxvankuik on 07-12-15.
- */
+import java.util.List;
+
 public class MenuBarView {
 
     public MenuBarView() {
 
     }
 
-    public static MenuBar getMenuBarView() {
+    public static MenuBar getMenuBarView(List<ViewImpl> lov) {
 
         MenuBar menuBar = new MenuBar();
 
@@ -42,6 +41,18 @@ public class MenuBarView {
                 menuItemB.setSelected(true);
                 menuItemC.setSelected(false);
 
+                ViewImpl tmpview = lov.get(0);
+                ViewImpl tmpview2 = lov.get(1);
+
+
+                if(tmpview.isVisible()) {
+                    tmpview.hide();
+                    tmpview2.show();
+                } else {
+                    tmpview.show();
+                    tmpview2.hide();
+                }
+
                 System.out.println("yo editor");
                 //  root.setCenter(editorview.items());
 
@@ -53,6 +64,17 @@ public class MenuBarView {
             public void handle(ActionEvent actionEvent) {
                 menuItemB.setSelected(false);
                 menuItemC.setSelected(true);
+
+                ViewImpl tmpview = lov.get(1);
+                ViewImpl tmpview2 = lov.get(0);
+
+                if(tmpview.isVisible()) {
+                    tmpview.hide();
+                    tmpview2.show();
+                } else {
+                    tmpview.show();
+                    tmpview2.hide();
+                }
 
                 System.out.println("yo selector");
                 //   root.setCenter(selectorview.items());
