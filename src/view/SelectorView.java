@@ -1,35 +1,27 @@
 package view;
 
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.Tab;
+import javafx.scene.layout.VBox;
 
 public class SelectorView implements ViewImpl {
-    HBox box = new HBox();
+    private String name;
+    private VBox items;
+    private Tab tab;
 
-    public SelectorView() {
-
+    public SelectorView(String name) {
+        this.name = name;
+        items = new VBox();
+        tab = new Tab(name);
+        tab.setClosable(false);
     }
 
-    public HBox items() {
-        Label label1 = new Label("Selector view");
-
-        box.getChildren().addAll(label1);
-        return box;
+    @Override
+    public VBox viewItems() {
+        return items;
     }
 
-    public void show() {
-        box.setVisible(true);
-    }
-
-    public void hide() {
-        box.setVisible(false);
-    }
-
-    public boolean isVisible() {
-        if(box.isVisible()) {
-            return true;
-        }
-
-        return false;
+    @Override
+    public Tab getTab() {
+        return tab;
     }
 }

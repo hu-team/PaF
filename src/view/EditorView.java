@@ -1,38 +1,29 @@
 package view;
 
 
-import javafx.scene.Node;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.Tab;
+import javafx.scene.layout.VBox;
+
 
 public class EditorView implements ViewImpl{
-    HBox box = new HBox();
+    private String name;
+    private VBox items;
+    private Tab tab;
 
-    public EditorView() {
-
+    public EditorView(String name) {
+        this.name = name;
+        items = new VBox();
+        tab = new Tab(name);
+        tab.setClosable(false);
     }
 
-    public HBox items() {
-
-        TextField txtfield = new TextField();
-
-        box.getChildren().addAll(txtfield);
-        return box;
+    @Override
+    public VBox viewItems() {
+        return items;
     }
 
-    public void show() {
-        box.setVisible(true);
-    }
-
-    public void hide() {
-        box.setVisible(false);
-    }
-
-    public boolean isVisible() {
-        if(box.isVisible()) {
-            return true;
-        }
-
-        return false;
+    @Override
+    public Tab getTab() {
+        return tab;
     }
 }

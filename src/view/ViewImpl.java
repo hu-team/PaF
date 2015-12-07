@@ -1,11 +1,10 @@
 package view;
 
-import javafx.scene.layout.HBox;
+import javafx.scene.control.Tab;
+import javafx.scene.layout.VBox;
 
 public interface ViewImpl {
 
-    HBox items();
-    void show();
-    void hide();
-    boolean isVisible();
+    VBox viewItems();
+    Tab getTab();
 }
