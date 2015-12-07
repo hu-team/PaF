@@ -1,10 +1,15 @@
 package view;
 
 
+import com.sun.tools.javac.comp.Check;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -31,8 +36,8 @@ public class View extends Application {
 
         // View tab
         Menu menuFile1 = new Menu("View");
-        MenuItem menuItemB = new MenuItem("Editor");
-        MenuItem menuItemC = new MenuItem("Selector");
+        CheckMenuItem menuItemB = createMenuItem("Editor");
+        CheckMenuItem menuItemC = createMenuItem("Selector");
         menuFile1.getItems().addAll(menuItemB, menuItemC);
 
         menuBar.getMenus().addAll(menuFile,menuFile1);
@@ -60,6 +65,18 @@ public class View extends Application {
 
 
         primaryStage.show();
+    }
+
+    private static CheckMenuItem createMenuItem(String title/*, final Node node*/) {
+        CheckMenuItem cmi = new CheckMenuItem(title);
+        cmi.setSelected(true);
+        cmi.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            public void changed(ObservableValue ov,
+                                Boolean old_val, Boolean new_val) {
+                // node.setVisible(new_val);
+            }
+        });
+        return cmi;
     }
 
 }
