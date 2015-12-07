@@ -23,7 +23,8 @@ public class MenuBarView {
         // File tab
         Menu menuFile = new Menu("File");
         MenuItem menuItemA = new MenuItem("Save As");
-        menuFile.getItems().add(menuItemA);
+        MenuItem menuItemD = new MenuItem("Import");
+        menuFile.getItems().addAll(menuItemA, menuItemD);
 
         // View tab
         Menu menuFile1 = new Menu("View");
