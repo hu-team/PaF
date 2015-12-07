@@ -23,13 +23,19 @@ public class View extends Application {
 
     public MenuBar MenuBar() {
         MenuBar menuBar = new MenuBar();
+
+        // File tab
         Menu menuFile = new Menu("File");
         MenuItem menuItemA = new MenuItem("Save As");
-        Menu menuFile1 = new Menu("Editor");
-        Menu menuFile2 = new Menu("Selector");
-
         menuFile.getItems().add(menuItemA);
-        menuBar.getMenus().addAll(menuFile,menuFile1,menuFile2);
+
+        // View tab
+        Menu menuFile1 = new Menu("View");
+        MenuItem menuItemB = new MenuItem("Editor");
+        MenuItem menuItemC = new MenuItem("Selector");
+        menuFile1.getItems().addAll(menuItemB, menuItemC);
+
+        menuBar.getMenus().addAll(menuFile,menuFile1);
 
         menuFile1.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent actionEvent) {
