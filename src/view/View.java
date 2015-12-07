@@ -26,7 +26,7 @@ public class View extends Application {
         Application.launch(args);
     }
 
-    public MenuBar MenuBar() {
+ /*   public MenuBar MenuBar() {
         MenuBar menuBar = new MenuBar();
 
         // File tab
@@ -71,13 +71,14 @@ public class View extends Application {
 
         return menuBar;
     }
+    */
 
     public void start(Stage primaryStage) throws Exception {
 
         primaryStage.setTitle("PaF");
 
 
-        root.setTop(this.MenuBar());
+        root.setTop(MenuBarView.getMenuBarView());
         root.setCenter(selectorview.items());
 
         Scene scene = new Scene(root, 800,600);
@@ -98,5 +99,7 @@ public class View extends Application {
         });
         return cmi;
     }
+
+
 
 }
