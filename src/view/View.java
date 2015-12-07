@@ -36,16 +36,36 @@ public class View extends Application {
 
         // View tab
         Menu menuFile1 = new Menu("View");
-        CheckMenuItem menuItemB = createMenuItem("Editor");
-        CheckMenuItem menuItemC = createMenuItem("Selector");
+        CheckMenuItem menuItemB = new CheckMenuItem("Editor");
+        CheckMenuItem menuItemC = new CheckMenuItem("Selector");
+        // Defaults for checked menuItem (Editor is default)
+        menuItemB.setSelected(true);
+        menuItemC.setSelected(false);
         menuFile1.getItems().addAll(menuItemB, menuItemC);
 
         menuBar.getMenus().addAll(menuFile,menuFile1);
 
-        menuFile1.setOnAction(new EventHandler<ActionEvent>() {
+        menuItemB.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent actionEvent) {
-                System.out.println("yo");
+                menuItemB.setSelected(true);
+                menuItemC.setSelected(false);
+
+                System.out.println("yo editor");
                 root.setCenter(editorview.items());
+
+
+            }
+        });
+
+        menuItemC.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent actionEvent) {
+                menuItemB.setSelected(false);
+                menuItemC.setSelected(true);
+
+                System.out.println("yo selector");
+                root.setCenter(selectorview.items());
+
+
             }
         });
 
