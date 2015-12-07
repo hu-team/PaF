@@ -11,7 +11,7 @@ public class View  {
 
     public View(Stage stage) {
         //Views
-        ViewImpl editorView = new EditorView("Editor");
+        ViewImpl editorView = new EditorView("Editor", stage);
         ViewImpl selectorView = new SelectorView("Selector");
 
         //TabPane
