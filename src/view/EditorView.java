@@ -55,7 +55,6 @@ public class EditorView implements ViewImpl{
         textField1.setMaxWidth(300);
         v1.getChildren().addAll(label1, textField1);
 
-
         // VBox 2
         VBox v2 = new VBox();
         Label label2 = new Label("Problem");
@@ -63,14 +62,12 @@ public class EditorView implements ViewImpl{
         textField2.setMaxWidth(300);
         v2.getChildren().addAll(label2, textField2);
 
-
         // VBox 3
         VBox v3 = new VBox();
         Label label3 = new Label("Solution");
         TextField textField3 = new TextField();
         textField3.setMaxWidth(300);
         v3.getChildren().addAll(label3, textField3);
-
 
         // VBox 4
         VBox v4 = new VBox();
@@ -87,7 +84,6 @@ public class EditorView implements ViewImpl{
 
         v4.getChildren().addAll(label4, button1);
 
-
         // VBox 5
         VBox v5 = new VBox();
         Label label5 = new Label("Consequences");
@@ -95,13 +91,10 @@ public class EditorView implements ViewImpl{
         textField4.setMaxWidth(300);
         v5.getChildren().addAll(label5, textField4);
 
-
         // VBox 6
         VBox v6 = new VBox();
         Button save = new Button("Save Pattern");
-
         v6.getChildren().addAll(save);
-
 
         content.add(v1);
         content.add(v2);
