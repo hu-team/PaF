@@ -1,16 +1,18 @@
 package view;
 
 
+import controller.PatternController;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.Model;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -23,10 +25,12 @@ public class EditorView implements ViewImpl{
     private List<VBox> content = new ArrayList<VBox>();
     private Tab tab;
     private Stage stage;
+    private Model model;
 
-    public EditorView(String name, Stage stage) {
+    public EditorView(String name, Stage stage, Model model) {
         this.name = name;
         this.stage = stage;
+        this.model = model;
         items = new VBox();
         tab = new Tab(name);
         tab.setContent(this.viewItems());
@@ -95,6 +99,15 @@ public class EditorView implements ViewImpl{
         VBox v6 = new VBox();
         Button save = new Button("Save Pattern");
         v6.getChildren().addAll(save);
+        save.setOnAction((ActionEvent event) -> {
+            List<TextField> tmpList = new ArrayList<TextField>();
+            tmpList.add(textField1);
+            tmpList.add(textField2);
+            tmpList.add(textField3);
+            tmpList.add(textField4);
+
+            //PatternController patternController = new PatternController(tmpList, model);
+        });
 
         content.add(v1);
         content.add(v2);
