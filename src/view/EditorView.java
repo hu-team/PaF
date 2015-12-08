@@ -2,20 +2,25 @@ package view;
 
 
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class EditorView implements ViewImpl{
     private String name;
     private VBox items;
+    private List<VBox> content = new ArrayList<VBox>();
     private Tab tab;
     private Stage stage;
 
@@ -30,23 +35,48 @@ public class EditorView implements ViewImpl{
 
     @Override
     public VBox viewItems() {
-        //Labels
+
+        for(VBox box : getContent()) {
+            items.getChildren().add(box);
+        }
+
+        items.setPadding(new Insets(10, 10, 10, 10));
+
+        items.setSpacing(10);
+
+        return items;
+    }
+
+    public List<VBox> getContent() {
+        // VBox 1
+        VBox v1 = new VBox();
         Label label1 = new Label("Context");
-        Label label2 = new Label("Problem");
-        Label label3 = new Label("Solution");
-        Label label4 = new Label("Diagram");
-        Label label5 = new Label("Consequences");
-
-        //Textfields
         TextField textField1 = new TextField();
+        textField1.setMaxWidth(300);
+        v1.getChildren().addAll(label1, textField1);
+
+
+        // VBox 2
+        VBox v2 = new VBox();
+        Label label2 = new Label("Problem");
         TextField textField2 = new TextField();
+        textField2.setMaxWidth(300);
+        v2.getChildren().addAll(label2, textField2);
+
+
+        // VBox 3
+        VBox v3 = new VBox();
+        Label label3 = new Label("Solution");
         TextField textField3 = new TextField();
-        TextField textField4 = new TextField();
+        textField3.setMaxWidth(300);
+        v3.getChildren().addAll(label3, textField3);
 
-        //Button
-        Button save = new Button("Save Pattern");
+
+        // VBox 4
+        VBox v4 = new VBox();
+        Label label4 = new Label("Diagram");
+
         Button button1 = new Button("Choose diagram");
-
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose diagram");
 
@@ -55,9 +85,32 @@ public class EditorView implements ViewImpl{
             File file = fileChooser.showOpenDialog(stage);
         });
 
-        items.getChildren().addAll(label1, textField1, label2, textField2, label3, textField3, label4, button1, label5, textField4, save);
+        v4.getChildren().addAll(label4, button1);
 
-        return items;
+
+        // VBox 5
+        VBox v5 = new VBox();
+        Label label5 = new Label("Consequences");
+        TextField textField4 = new TextField();
+        textField4.setMaxWidth(300);
+        v5.getChildren().addAll(label5, textField4);
+
+
+        // VBox 6
+        VBox v6 = new VBox();
+        Button save = new Button("Save Pattern");
+
+        v6.getChildren().addAll(save);
+
+
+        content.add(v1);
+        content.add(v2);
+        content.add(v3);
+        content.add(v4);
+        content.add(v5);
+        content.add(v6);
+
+        return content;
     }
 
     @Override

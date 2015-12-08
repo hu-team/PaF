@@ -1,13 +1,16 @@
 package view;
 
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class View  {
     private BorderPane borderPane;
     private TabPane tabPane;
+    private VBox vbox;
 
     public View(Stage stage) {
         //Views
@@ -18,10 +21,15 @@ public class View  {
         tabPane = new TabPane();
         tabPane.getTabs().addAll(editorView.getTab(), selectorView.getTab());
 
+        // VBox
+        vbox = new VBox();
+        vbox.getChildren().addAll(MenuBarView.getMenuBarView(), tabPane);
+
+
         //BorderPane
         borderPane = new BorderPane();
-        borderPane.setTop(MenuBarView.getMenuBarView());
-        borderPane.setCenter(tabPane);
+        borderPane.setTop(vbox);
+        borderPane.setLeft(null);
 
         //Stage
         stage.setTitle("CoProCo");
