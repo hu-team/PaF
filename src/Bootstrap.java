@@ -8,11 +8,11 @@ public class Bootstrap extends Application {
     Model model;
 
     public static void main(String args[]) {
-        Model model = new Model();
         Application.launch(args);
     }
 
     public void start(Stage stage) throws Exception {
+        Model model = new Model();
         view = new View(stage, model);
     }
 }

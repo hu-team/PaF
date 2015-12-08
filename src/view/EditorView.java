@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -24,6 +26,7 @@ public class EditorView implements ViewImpl{
     private VBox items;
     private List<VBox> content = new ArrayList<VBox>();
     private Tab tab;
+    private String filePath;
     private Stage stage;
     private Model model;
 
@@ -84,6 +87,9 @@ public class EditorView implements ViewImpl{
         button1.setOnAction((ActionEvent event) -> {
 
             File file = fileChooser.showOpenDialog(stage);
+            filePath = file.getPath();
+            //Image image = new Image(getClass().getResourceAsStream(filePath));
+            //label4.setGraphic(new ImageView(image));
         });
 
         v4.getChildren().addAll(label4, button1);
@@ -101,12 +107,15 @@ public class EditorView implements ViewImpl{
         v6.getChildren().addAll(save);
         save.setOnAction((ActionEvent event) -> {
             List<TextField> tmpList = new ArrayList<TextField>();
+
+            TextField tmpfile = new TextField(filePath);
             tmpList.add(textField1);
             tmpList.add(textField2);
             tmpList.add(textField3);
             tmpList.add(textField4);
+            tmpList.add(tmpfile);
 
-            //PatternController patternController = new PatternController(tmpList, model);
+            PatternController patternController = new PatternController(tmpList, model);
         });
 
         content.add(v1);
