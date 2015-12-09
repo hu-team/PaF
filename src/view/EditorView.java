@@ -101,6 +101,13 @@ public class EditorView implements ViewImpl{
         textField4.setMaxWidth(300);
         v5.getChildren().addAll(label5, textField4);
 
+        //VBox 7
+        VBox v7 = new VBox();
+        Label label6 = new Label("Name");
+        TextField textField5 = new TextField();
+        textField5.setMaxWidth(300);
+        v5.getChildren().addAll(label5, textField5);
+
         // VBox 6
         VBox v6 = new VBox();
         Button save = new Button("Save Pattern");
@@ -114,10 +121,12 @@ public class EditorView implements ViewImpl{
             tmpList.add(textField3);
             tmpList.add(textField4);
             tmpList.add(tmpfile);
+            tmpList.add(textField5);
 
             PatternController patternController = new PatternController(tmpList, model);
         });
 
+        content.add(v7);
         content.add(v1);
         content.add(v2);
         content.add(v3);
