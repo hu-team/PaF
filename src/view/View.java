@@ -15,7 +15,7 @@ public class View  {
     public View(Stage stage, Model model) {
         //Views
         ViewImpl editorView = new EditorView("Editor", stage, model);
-        ViewImpl selectorView = new SelectorView("Selector");
+        ViewImpl selectorView = new SelectorView("Selector", model);
 
         //TabPane
         tabPane = new TabPane();
