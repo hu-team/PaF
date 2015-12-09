@@ -124,8 +124,9 @@ public class EditorView implements ViewImpl{
             tmpList.add(textField5);
 
             PatternController patternController = new PatternController(tmpList, model);
+            this.clearTextfields(tmpList);
         });
-        
+
         content.add(v7);
         content.add(v1);
         content.add(v2);
@@ -136,6 +137,12 @@ public class EditorView implements ViewImpl{
 
 
         return content;
+    }
+
+    public void clearTextfields(List<TextField> textFields) {
+        for(TextField t: textFields) {
+            t.setText("");
+        }
     }
 
     @Override
