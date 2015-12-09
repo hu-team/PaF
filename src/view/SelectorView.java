@@ -25,10 +25,7 @@ public class SelectorView implements ViewImpl {
     public VBox viewItems() {
         ChoiceBox cb = new ChoiceBox();
 
-        for(Pattern m: model.getPatterns()) {
-            cb.getItems().add(m.getName());
-        }
-        cb.getItems().add("yoyoy");
+        cb.setItems(model.getPatternsByName());
 
         items.getChildren().addAll(cb);
 

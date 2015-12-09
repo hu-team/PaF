@@ -5,7 +5,6 @@ import view.View;
 
 public class Bootstrap extends Application {
     View view;
-    Model model;
 
     public static void main(String args[]) {
         Application.launch(args);
