@@ -76,14 +76,14 @@ public class EditorView implements ViewImpl{
         });
 
         save.setOnAction((ActionEvent event) -> {
-            List<TextField> tmpList = new ArrayList<TextField>();
+            List<TextField> tmpList = new ArrayList<>();
 
             TextField tmpfile = new TextField(filePath);
             tmpList.add(getTextfields().get(1));
             tmpList.add(getTextfields().get(2));
-            tmpList.add(getTextfields().get(5));
-            tmpList.add(getTextfields().get(3));
             tmpList.add(getTextfields().get(4));
+            tmpList.add(getTextfields().get(3));
+            tmpList.add(tmpfile);
             tmpList.add(getTextfields().get(0));
 
             PatternController patternController = new PatternController(tmpList, model);
@@ -160,16 +160,16 @@ public class EditorView implements ViewImpl{
         //VBox 3 [Problem]
         v3.getChildren().addAll(getLabels().get(2), getTextfields().get(2));
 
-        //VBox 5 [Consequences]
+        //VBox 4 [Consequences]
         v4.getChildren().addAll(getLabels().get(3), getTextfields().get(3));
 
-        //VBox 4 [Diagram]
+        //VBox 5 [Diagram]
         v5.getChildren().addAll(getLabels().get(4), getButtons().get(0));
 
-        //VBox 5 [Solution]
+        //VBox 6 [Solution]
         v6.getChildren().addAll(getLabels().get(5), getTextfields().get(4));
 
-        //VBox 6 [Save]
+        //VBox 7 [Save]
         v7.getChildren().addAll(getButtons().get(1));
 
         vBoxes.add(v1);

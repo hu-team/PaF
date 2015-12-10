@@ -15,7 +15,7 @@ public class PatternController {
     }
 
     public void savePattern(List<TextField> txtfield) {
-        Pattern pattern = new Pattern((String) txtfield.get(0).getText(), (String) txtfield.get(1).getText(), (String) txtfield.get(2).getText(), (String) txtfield.get(3).getText(), (String) txtfield.get(4).getText(), (String) txtfield.get(5).getText());
+        Pattern pattern = new Pattern(txtfield.get(0).getText(), txtfield.get(1).getText(), txtfield.get(2).getText(), txtfield.get(3).getText(), txtfield.get(4).getText(), txtfield.get(5).getText());
         model.save(pattern);
     }
 }
