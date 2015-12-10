@@ -22,6 +22,8 @@ public class SelectorController {
          List<Pattern> patterns = model.getPatterns();
          Pattern pattern = patterns.get(index);
 
+        System.out.println(pattern.toString());
+
         labels.get(1).setText(pattern.getName());
         labels.get(3).setText(pattern.getContext());
         labels.get(5).setText(pattern.getProblem());

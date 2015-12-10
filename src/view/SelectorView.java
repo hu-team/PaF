@@ -49,6 +49,7 @@ public class SelectorView implements ViewImpl {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 SelectorController sc = new SelectorController();
 
+
                 int index = newValue.intValue();
                 sc.setLabel(getLabels(), index, model);
                 imgview.setImage(sc.getImage(index, model));

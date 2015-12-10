@@ -29,6 +29,8 @@ public class EditorView implements ViewImpl{
     private Stage stage;
     private Model model;
 
+    private TextField textField1, textField2, textField3, textField4, textField5;
+
     public EditorView(String name, Stage stage, Model model) {
         this.name = name;
         this.stage = stage;
@@ -79,17 +81,15 @@ public class EditorView implements ViewImpl{
             List<TextField> tmpList = new ArrayList<>();
 
             TextField tmpfile = new TextField(filePath);
-            tmpList.add(getTextfields().get(1));
-            tmpList.add(getTextfields().get(2));
-            tmpList.add(getTextfields().get(4));
-            tmpList.add(getTextfields().get(3));
+            tmpList.add(textField1);
+            tmpList.add(textField2);
+            tmpList.add(textField3);
+            tmpList.add(textField4);
             tmpList.add(tmpfile);
-            tmpList.add(getTextfields().get(0));
+            tmpList.add(textField5);
 
-
-            // met deze lijn aanroepen begint de error
             PatternController patternController = new PatternController(tmpList, model);
-            this.clearTextfields(tmpList);
+            //this.clearTextfields(tmpList);
         });
 
         buttons.add(button1);
@@ -121,11 +121,11 @@ public class EditorView implements ViewImpl{
     public List<TextField> getTextfields() {
         List<TextField> textFields = new ArrayList<>();
 
-        TextField textField1 = new TextField(); // Naam
-        TextField textField2 = new TextField(); // Context
-        TextField textField3 = new TextField(); // Problem
-        TextField textField4 = new TextField(); // Consequences
-        TextField textField5 = new TextField(); // Solution
+         textField1 = new TextField(); // Naam
+         textField2 = new TextField(); // Context
+         textField3 = new TextField(); // Problem
+         textField4 = new TextField(); // Consequences
+         textField5 = new TextField(); // Solution
 
         textField1.setMaxWidth(300);
         textField2.setMaxWidth(300);
@@ -138,6 +138,12 @@ public class EditorView implements ViewImpl{
         textFields.add(textField3);
         textFields.add(textField4);
         textFields.add(textField5);
+
+        //textFields.add(new TextField(filePath));
+
+        for(TextField field : textFields) {
+            field.setMaxWidth(300);
+        }
 
         return textFields;
     }

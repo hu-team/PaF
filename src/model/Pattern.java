@@ -36,4 +36,16 @@ public class Pattern {
         return name;
     }
 
+
+    @Override
+    public String toString() {
+        return "Pattern{" +
+                "context='" + context + '\'' +
+                ", problem='" + problem + '\'' +
+                ", solution='" + solution + '\'' +
+                ", diagram='" + diagram + '\'' +
+                ", consequences='" + consequences + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
