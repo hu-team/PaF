@@ -20,9 +20,7 @@ import java.util.List;
 
 public class SelectorView implements ViewImpl {
     private String name;
-    private VBox items, v1, v2, v3, v4, v5, imgbox, leftbox, rightbox;
-    private List<VBox> vBoxes = new ArrayList<>();
-    private List<Label> labels = new ArrayList<>();
+    private VBox items, v1, v2, v3, v4, v5, leftbox, rightbox;
     private Tab tab;
     private Model model;
     private HBox mainbox = new HBox();
@@ -82,7 +80,9 @@ public class SelectorView implements ViewImpl {
     }
 
     public List<Label> getLabels() {
-        //VBox 1 [Name]
+        List<Label> labels = new ArrayList<>();
+
+        //Label 1 [Name]
         Label label1 = new Label("Naam");
         Label label2 = new Label();
 
@@ -117,6 +117,8 @@ public class SelectorView implements ViewImpl {
     }
 
     public List<VBox> getVBoxes() {
+        List<VBox> vBoxes = new ArrayList<>();
+
         v1 = new VBox();
         v2 = new VBox();
         v3 = new VBox();
@@ -144,22 +146,8 @@ public class SelectorView implements ViewImpl {
         vBoxes.add(v3);
         vBoxes.add(v4);
         vBoxes.add(v5);
-        //vBoxes.add(v6);
 
         return vBoxes;
-    }
-
-    public VBox getImageBox() {
-        imgbox = new VBox();
-        Label testlab = new Label("Naam");
-
-        imgbox.getChildren().addAll(testlab);
-        imgbox.setAlignment(Pos.TOP_RIGHT);
-
-        //Label 6 [Image]
-        //imgbox.getChildren().addAll();
-
-        return imgbox;
     }
 
     @Override
