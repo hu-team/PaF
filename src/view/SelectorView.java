@@ -12,13 +12,15 @@ import javafx.scene.layout.VBox;
 import model.Model;
 import model.Pattern;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SelectorView implements ViewImpl {
     private String name;
-    private VBox items, leftbox, rightbox;
-    private List<Label> content = new ArrayList<Label>();
+    private VBox items, v1, v2, v3, v4, v5;
+    private List<VBox> vBoxes = new ArrayList<VBox>();
+    private List<Label> labels = new ArrayList<Label>();
     private Tab tab;
     private Model model;
     private HBox mainbox = new HBox();
@@ -27,8 +29,11 @@ public class SelectorView implements ViewImpl {
         this.name = name;
         this.model = model;
         items = new VBox();
-        leftbox = new VBox();
-        rightbox = new VBox();
+        v1 = new VBox();
+        v2 = new VBox();
+        v3 = new VBox();
+        v4 = new VBox();
+        v5 = new VBox();
         tab = new Tab(name);
         tab.setContent(this.viewItems());
         tab.setClosable(false);
@@ -39,8 +44,7 @@ public class SelectorView implements ViewImpl {
         ChoiceBox cb = new ChoiceBox();
 
         cb.setItems(model.getPatternsByName());
-
-
+        items.getChildren().addAll(cb);
 
         cb.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -48,24 +52,22 @@ public class SelectorView implements ViewImpl {
                 SelectorController sc = new SelectorController();
 
                 int index = newValue.intValue();
-                sc.setLabel(getContent(), index, model);
+                sc.setLabel(getLabels(), index, model);
             }
         });
 
-        for(Label lab : getContent()) {
-            rightbox.getChildren().add(lab);
+        for(VBox box : getVBoxes()) {
+            items.getChildren().add(box);
         }
 
         items.setPadding(new Insets(10,10,10,10));
-        leftbox.getChildren().addAll(cb);
-        mainbox.getChildren().addAll(leftbox, rightbox);
-        items.getChildren().add(mainbox);
+        items.setSpacing(30);
 
         return items;
     }
 
-    public List<Label> getContent() {
-        //Label 1 [Name]
+    public List<Label> getLabels() {
+        //VBox 1 [Name]
         Label label1 = new Label("Naam");
         Label label2 = new Label();
 
@@ -85,18 +87,43 @@ public class SelectorView implements ViewImpl {
         Label label9 = new Label("Solution");
         Label label10 = new Label();
 
-        content.add(label1);
-        content.add(label2);
-        content.add(label3);
-        content.add(label4);
-        content.add(label5);
-        content.add(label6);
-        content.add(label7);
-        content.add(label8);
-        content.add(label9);
-        content.add(label10);
+        labels.add(label1);
+        labels.add(label2);
+        labels.add(label3);
+        labels.add(label4);
+        labels.add(label5);
+        labels.add(label6);
+        labels.add(label7);
+        labels.add(label8);
+        labels.add(label9);
+        labels.add(label10);
 
-        return content;
+        return labels;
+    }
+
+    public List<VBox> getVBoxes() {
+        //VBox 1 [Name]
+        v1.getChildren().addAll(getLabels().get(0), getLabels().get(1));
+
+        //VBox 2 [Context]
+        v2.getChildren().addAll(getLabels().get(2), getLabels().get(3));
+
+        //VBox 3 [Problem]
+        v3.getChildren().addAll(getLabels().get(4), getLabels().get(5));
+
+        //Label 4 [Consequences]
+        v4.getChildren().addAll(getLabels().get(6), getLabels().get(7));
+
+        //Label 5 [Solution]
+        v5.getChildren().addAll(getLabels().get(8), getLabels().get(9));
+
+        vBoxes.add(v1);
+        vBoxes.add(v2);
+        vBoxes.add(v3);
+        vBoxes.add(v4);
+        vBoxes.add(v5);
+
+        return vBoxes;
     }
 
     @Override
