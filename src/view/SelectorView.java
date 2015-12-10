@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Model;
@@ -19,18 +20,20 @@ import java.util.List;
 
 public class SelectorView implements ViewImpl {
     private String name;
-    private VBox items, v1, v2, v3, v4, v5, imgbox, leftbox;
-    private List<VBox> vBoxes = new ArrayList<VBox>();
-    private List<Label> labels = new ArrayList<Label>();
+    private VBox items, v1, v2, v3, v4, v5, imgbox, leftbox, rightbox;
+    private List<VBox> vBoxes = new ArrayList<>();
+    private List<Label> labels = new ArrayList<>();
     private Tab tab;
     private Model model;
     private HBox mainbox = new HBox();
+    private ImageView imgview = new ImageView();
 
     public SelectorView(String name, Model model) {
         this.name = name;
         this.model = model;
         items = new VBox();
         leftbox = new VBox();
+        rightbox = new VBox();
         tab = new Tab(name);
         tab.setContent(this.viewItems());
         tab.setClosable(false);
@@ -50,6 +53,7 @@ public class SelectorView implements ViewImpl {
 
                 int index = newValue.intValue();
                 sc.setLabel(getLabels(), index, model);
+                imgview.setImage(sc.getImage(index, model));
             }
         });
 
@@ -57,10 +61,22 @@ public class SelectorView implements ViewImpl {
             leftbox.getChildren().add(box);
         }
 
-        mainbox.getChildren().addAll(leftbox, getImageBox());
+        imgview.setPreserveRatio(true);
+        imgview.setFitWidth(500);
+        imgview.setFitHeight(450);
+
+        leftbox.setSpacing(50);
+        rightbox.setPadding(new Insets(40, 10, 10, 100));
+
+        rightbox.getChildren().addAll(imgview);
+
+        mainbox.getChildren().addAll(leftbox, rightbox);
+        mainbox.setPadding(new Insets(10,10,10,10));
+
         items.getChildren().addAll(mainbox);
         items.setPadding(new Insets(10,10,10,10));
         items.setSpacing(30);
+
 
         return items;
     }
@@ -138,8 +154,7 @@ public class SelectorView implements ViewImpl {
         Label testlab = new Label("Naam");
 
         imgbox.getChildren().addAll(testlab);
-        imgbox.setAlignment(Pos.CENTER_RIGHT);
-        imgbox.setPadding(new Insets(20,20,20,100));
+        imgbox.setAlignment(Pos.TOP_RIGHT);
 
         //Label 6 [Image]
         //imgbox.getChildren().addAll();
