@@ -87,7 +87,11 @@ public class EditorView implements ViewImpl{
         button1.setOnAction((ActionEvent event) -> {
 
             File file = fileChooser.showOpenDialog(stage);
-            filePath = file.getPath();
+            try {
+                filePath = file.getPath();
+            } catch (Exception e) {
+                System.out.println("No file selected");
+            }
             //Image image = new Image(getClass().getResourceAsStream(filePath));
             //label4.setGraphic(new ImageView(image));
         });
@@ -134,7 +138,6 @@ public class EditorView implements ViewImpl{
         content.add(v4);
         content.add(v5);
         content.add(v6);
-
 
         return content;
     }
