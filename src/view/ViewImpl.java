@@ -10,7 +10,7 @@ public interface ViewImpl {
 
     VBox viewItems();
     Tab getTab();
-    List<Label> getLabels();
-    List<VBox> getVBoxes();
+  //  List<Label> getLabels();
+    //List<VBox> getVBoxes();
 
     }

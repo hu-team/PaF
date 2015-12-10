@@ -86,6 +86,8 @@ public class EditorView implements ViewImpl{
             tmpList.add(tmpfile);
             tmpList.add(getTextfields().get(0));
 
+
+            // met deze lijn aanroepen begint de error
             PatternController patternController = new PatternController(tmpList, model);
             this.clearTextfields(tmpList);
         });
