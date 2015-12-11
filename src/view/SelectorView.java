@@ -3,7 +3,9 @@ package view;
 import controller.SelectorController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -64,6 +66,11 @@ public class SelectorView implements ViewImpl {
     @Override
     public VBox viewItems() {
         ChoiceBox cb = new ChoiceBox();
+        Button exportDiagram = new Button("Export Diagram");
+
+        exportDiagram.setOnAction((ActionEvent e) -> {
+            sc.exportDiagram();
+        });
 
         cb.setItems(model.getPatternsByName());
         leftbox.getChildren().addAll(cb);
@@ -95,9 +102,10 @@ public class SelectorView implements ViewImpl {
         mainbox.getChildren().addAll(leftbox, rightbox);
         mainbox.setPadding(new Insets(10,10,10,10));
 
-        items.getChildren().addAll(mainbox);
+        items.getChildren().addAll(mainbox, exportDiagram);
         items.setPadding(new Insets(10,10,10,10));
         items.setSpacing(30);
+
 
         return items;
     }

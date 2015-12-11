@@ -22,6 +22,11 @@ public class SelectorController {
         labels.get(9).setText(pattern.getSolution());
     }
 
+    public void exportDiagram() {
+        //TODO EXPORT LOGIC
+        System.out.println("export logic layer");
+    }
+
     public Image getImage(int index, Model model) {
         List<Pattern> patterns = model.getPatterns();
         Pattern pattern = patterns.get(index);

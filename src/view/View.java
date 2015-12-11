@@ -32,7 +32,7 @@ public class View  {
 
         //Stage
         stage.setTitle("CoProCo");
-        stage.setScene(new Scene(borderPane, 800,600));
+        stage.setScene(new Scene(borderPane, 1027,768));
         stage.show();
     }
 }
