@@ -114,6 +114,10 @@ public class SelectorView implements ViewImpl {
         labels.add(label9);
         labels.add(label10);
 
+        for (int i = 0 ; i < labels.size() ; i = i + 2) {
+            labels.get(i).setStyle("-fx-font-weight: bold;");
+        }
+
         return labels;
     }
 

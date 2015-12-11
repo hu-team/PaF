@@ -132,6 +132,10 @@ public class EditorView implements ViewImpl{
         labels.add(label6);
         labels.add(path);
 
+        for (int i = 0 ; i < 6 ; i++) {
+            labels.get(i).setStyle("-fx-font-weight: bold;");
+        }
+
         return labels;
     }
 
