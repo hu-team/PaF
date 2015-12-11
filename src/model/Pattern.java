@@ -3,7 +3,7 @@ package model;
 public class Pattern {
     private String context, problem, solution, diagram, consequences, name;
 
-    public Pattern(String name, String problem, String solution, String consequences,String diagram, String context) {
+    public Pattern(String name, String context, String problem, String consequences,String diagram, String solution) {
         this.context = context;
         this.problem = problem;
         this.solution = solution;
@@ -36,16 +36,4 @@ public class Pattern {
         return name;
     }
 
-
-    @Override
-    public String toString() {
-        return "Pattern{" +
-                "context='" + context + '\'' +
-                ", problem='" + problem + '\'' +
-                ", solution='" + solution + '\'' +
-                ", diagram='" + diagram + '\'' +
-                ", consequences='" + consequences + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

@@ -25,7 +25,6 @@ public class View  {
         vbox = new VBox();
         vbox.getChildren().addAll(MenuBarView.getMenuBarView(), tabPane);
 
-
         //BorderPane
         borderPane = new BorderPane();
         borderPane.setTop(vbox);

@@ -28,8 +28,8 @@ public class EditorView implements ViewImpl{
     private String filePath;
     private Stage stage;
     private Model model;
-
     private TextField textField1, textField2, textField3, textField4, textField5;
+    private Label label1, label2, label3, label4, label5, label6, path;
 
     public EditorView(String name, Stage stage, Model model) {
         this.name = name;
@@ -48,6 +48,16 @@ public class EditorView implements ViewImpl{
         textField3 = new TextField(); // Problem
         textField4 = new TextField(); // Consequences
         textField5 = new TextField(); // Solution
+
+        label1 = new Label("Name");
+        label2 = new Label("Context");
+        label3 = new Label("Problem");
+        label4 = new Label("Consequences");
+        label5 = new Label("Diagram");
+        label6 = new Label("Solution");
+
+        // Label next to Choose diagram button
+        path = new Label();
     }
 
     @Override
@@ -82,6 +92,9 @@ public class EditorView implements ViewImpl{
             } catch (Exception e) {
                 System.out.println("No file selected");
             }
+
+            getLabels().get(6).setText(filePath);
+
             //Image image = new Image(getClass().getResourceAsStream(filePath));
             //label4.setGraphic(new ImageView(image));
         });
@@ -90,15 +103,15 @@ public class EditorView implements ViewImpl{
             List<TextField> tmpList = new ArrayList<>();
 
             TextField tmpfile = new TextField(filePath);
-            tmpList.add(textField1);
-            tmpList.add(textField2);
-            tmpList.add(textField3);
-            tmpList.add(textField4);
+            tmpList.add(getTextfields().get(0));
+            tmpList.add(getTextfields().get(1));
+            tmpList.add(getTextfields().get(2));
+            tmpList.add(getTextfields().get(3));
             tmpList.add(tmpfile);
-            tmpList.add(textField5);
+            tmpList.add(getTextfields().get(4));
 
             PatternController patternController = new PatternController(tmpList, model);
-            //this.clearTextfields(tmpList);
+            this.clearTextfields(tmpList);
         });
 
         buttons.add(button1);
@@ -110,19 +123,14 @@ public class EditorView implements ViewImpl{
     public List<Label> getLabels() {
         List<Label> labels = new ArrayList<>();
 
-        Label label1 = new Label("Name");
-        Label label2 = new Label("Context");
-        Label label3 = new Label("Problem");
-        Label label4 = new Label("Consequences");
-        Label label5 = new Label("Diagram");
-        Label label6 = new Label("Solution");
-
+        // Order important
         labels.add(label1);
         labels.add(label2);
         labels.add(label3);
         labels.add(label4);
         labels.add(label5);
         labels.add(label6);
+        labels.add(path);
 
         return labels;
     }
@@ -130,19 +138,11 @@ public class EditorView implements ViewImpl{
     public List<TextField> getTextfields() {
         List<TextField> textFields = new ArrayList<>();
 
-        textField1.setMaxWidth(300);
-        textField2.setMaxWidth(300);
-        textField3.setMaxWidth(300);
-        textField4.setMaxWidth(300);
-        textField5.setMaxWidth(300);
-
         textFields.add(textField1);
         textFields.add(textField2);
         textFields.add(textField3);
         textFields.add(textField4);
         textFields.add(textField5);
-
-        //textFields.add(new TextField(filePath));
 
         for(TextField field : textFields) {
             field.setMaxWidth(300);
@@ -175,7 +175,7 @@ public class EditorView implements ViewImpl{
         v4.getChildren().addAll(getLabels().get(3), getTextfields().get(3));
 
         //VBox 5 [Diagram]
-        v5.getChildren().addAll(getLabels().get(4), getButtons().get(0));
+        v5.getChildren().addAll(getLabels().get(4), getButtons().get(0), getLabels().get(6));
 
         //VBox 6 [Solution]
         v6.getChildren().addAll(getLabels().get(5), getTextfields().get(4));
@@ -199,6 +199,7 @@ public class EditorView implements ViewImpl{
         for(TextField t: textFields) {
             t.setText("");
         }
+        getLabels().get(6).setText("");
     }
 
     @Override

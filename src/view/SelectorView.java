@@ -4,7 +4,6 @@ import controller.SelectorController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -12,9 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Model;
-import model.Pattern;
 
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,15 +23,40 @@ public class SelectorView implements ViewImpl {
     private HBox mainbox = new HBox();
     private ImageView imgview = new ImageView();
 
+    private Label label1, label2, label3, label4, label5,label6,label7,label8,label9,label10;
+
     public SelectorView(String name, Model model) {
         this.name = name;
         this.model = model;
         items = new VBox();
         leftbox = new VBox();
         rightbox = new VBox();
+        this.initObj();
         tab = new Tab(name);
         tab.setContent(this.viewItems());
         tab.setClosable(false);
+    }
+
+    public void initObj() {
+        //Label 1 [Name]
+        label1 = new Label("Naam");
+        label2 = new Label("");
+
+        //Label 2 [Context]
+        label3 = new Label("Context");
+        label4 = new Label("");
+
+        //Label 3 [Problem]
+        label5 = new Label("Problem");
+        label6 = new Label("");
+
+        //Label 4 [Consequences]
+        label7 = new Label("Consequences");
+        label8 = new Label("");
+
+        //Label 5 [Solution]
+        label9 = new Label("Solution");
+        label10 = new Label("");
     }
 
     @Override
@@ -48,7 +70,6 @@ public class SelectorView implements ViewImpl {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 SelectorController sc = new SelectorController();
-
 
                 int index = newValue.intValue();
                 sc.setLabel(getLabels(), index, model);
@@ -65,8 +86,8 @@ public class SelectorView implements ViewImpl {
         imgview.setFitHeight(450);
 
         leftbox.setSpacing(50);
-        rightbox.setPadding(new Insets(40, 10, 10, 100));
 
+        rightbox.setPadding(new Insets(40, 10, 10, 100));
         rightbox.getChildren().addAll(imgview);
 
         mainbox.getChildren().addAll(leftbox, rightbox);
@@ -76,32 +97,11 @@ public class SelectorView implements ViewImpl {
         items.setPadding(new Insets(10,10,10,10));
         items.setSpacing(30);
 
-
         return items;
     }
 
     public List<Label> getLabels() {
         List<Label> labels = new ArrayList<>();
-
-        //Label 1 [Name]
-        Label label1 = new Label("Naam");
-        Label label2 = new Label();
-
-        //Label 2 [Context]
-        Label label3 = new Label("Context");
-        Label label4 = new Label();
-
-        //Label 3 [Problem]
-        Label label5 = new Label("Problem");
-        Label label6 = new Label();
-
-        //Label 4 [Consequences]
-        Label label7 = new Label("Consequences");
-        Label label8 = new Label();
-
-        //Label 5 [Solution]
-        Label label9 = new Label("Solution");
-        Label label10 = new Label();
 
         labels.add(label1);
         labels.add(label2);
@@ -125,7 +125,6 @@ public class SelectorView implements ViewImpl {
         v3 = new VBox();
         v4 = new VBox();
         v5 = new VBox();
-
 
         //VBox 1 [Name]
         v1.getChildren().addAll(getLabels().get(0), getLabels().get(1));
