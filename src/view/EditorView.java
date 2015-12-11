@@ -30,6 +30,7 @@ public class EditorView implements ViewImpl{
     private Model model;
     private TextField textField1, textField2, textField3, textField4, textField5;
     private Label label1, label2, label3, label4, label5, label6, path;
+    private PatternController patternController;
 
     public EditorView(String name, Stage stage, Model model) {
         this.name = name;
@@ -37,6 +38,7 @@ public class EditorView implements ViewImpl{
         this.model = model;
         items = new VBox();
         tab = new Tab(name);
+        patternController = new PatternController(model);
         this.initObj();
         tab.setContent(this.viewItems());
         tab.setClosable(false);
@@ -110,7 +112,7 @@ public class EditorView implements ViewImpl{
             tmpList.add(tmpfile);
             tmpList.add(getTextfields().get(4));
 
-            PatternController patternController = new PatternController(tmpList, model);
+            patternController.savePattern(tmpList);
             this.clearTextfields(tmpList);
         });
 

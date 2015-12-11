@@ -9,9 +9,8 @@ import java.util.List;
 public class PatternController {
     private Model model;
 
-    public PatternController(List<TextField> textField, Model model) {
+    public PatternController(Model model) {
         this.model = model;
-        this.savePattern(textField);
     }
 
     public void savePattern(List<TextField> txtfield) {

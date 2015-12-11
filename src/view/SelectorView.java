@@ -22,6 +22,7 @@ public class SelectorView implements ViewImpl {
     private Model model;
     private HBox mainbox = new HBox();
     private ImageView imgview = new ImageView();
+    private SelectorController sc;
 
     private Label label1, label2, label3, label4, label5,label6,label7,label8,label9,label10;
 
@@ -31,6 +32,7 @@ public class SelectorView implements ViewImpl {
         items = new VBox();
         leftbox = new VBox();
         rightbox = new VBox();
+        sc = new SelectorController();
         this.initObj();
         tab = new Tab(name);
         tab.setContent(this.viewItems());
@@ -69,7 +71,7 @@ public class SelectorView implements ViewImpl {
         cb.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                SelectorController sc = new SelectorController();
+
 
                 int index = newValue.intValue();
                 sc.setLabel(getLabels(), index, model);
