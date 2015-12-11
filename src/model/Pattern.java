@@ -3,7 +3,7 @@ package model;
 public class Pattern {
     private String context, problem, solution, diagram, consequences, name;
 
-    public Pattern(String context, String problem, String solution, String consequences,String diagram, String name) {
+    public Pattern(String name, String problem, String solution, String consequences,String diagram, String context) {
         this.context = context;
         this.problem = problem;
         this.solution = solution;

@@ -37,8 +37,17 @@ public class EditorView implements ViewImpl{
         this.model = model;
         items = new VBox();
         tab = new Tab(name);
+        this.initObj();
         tab.setContent(this.viewItems());
         tab.setClosable(false);
+    }
+
+    public void initObj() {
+        textField1 = new TextField(); // Naam
+        textField2 = new TextField(); // Context
+        textField3 = new TextField(); // Problem
+        textField4 = new TextField(); // Consequences
+        textField5 = new TextField(); // Solution
     }
 
     @Override
@@ -120,12 +129,6 @@ public class EditorView implements ViewImpl{
 
     public List<TextField> getTextfields() {
         List<TextField> textFields = new ArrayList<>();
-
-         textField1 = new TextField(); // Naam
-         textField2 = new TextField(); // Context
-         textField3 = new TextField(); // Problem
-         textField4 = new TextField(); // Consequences
-         textField5 = new TextField(); // Solution
 
         textField1.setMaxWidth(300);
         textField2.setMaxWidth(300);
