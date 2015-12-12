@@ -1,5 +1,6 @@
 package controller;
 
+import component.JSONExportAdapter;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import model.Model;
@@ -9,7 +10,8 @@ import java.io.File;
 import java.util.List;
 
 public class SelectorController {
-    Image image;
+    private Image image;
+    private JSONExportAdapter jsonea = new JSONExportAdapter();
 
     public void setLabel(List<Label> labels, int index, Model model) {
         List<Pattern> patterns = model.getPatterns();
@@ -22,9 +24,16 @@ public class SelectorController {
         labels.get(9).setText(pattern.getSolution());
     }
 
-    public void exportDiagram() {
+    public void exportDiagram(Pattern pattern) {
         //TODO EXPORT LOGIC
-        System.out.println("export logic layer");
+        jsonea.generate(pattern);
+    }
+
+    public Pattern getPattern(int index,Model model) {
+        List<Pattern> patterns = model.getPatterns();
+        Pattern pattern = patterns.get(index);
+
+        return pattern;
     }
 
     public Image getImage(int index, Model model) {

@@ -1,6 +1,8 @@
 package component;
 
+import model.Pattern;
+
 public interface Export {
-    void generate();
-    void save();
+    void generate(Pattern pattern);
+    void save(Pattern pattern);
 }

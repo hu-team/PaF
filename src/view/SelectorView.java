@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Model;
+import model.Pattern;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class SelectorView implements ViewImpl {
     private HBox mainbox = new HBox();
     private ImageView imgview = new ImageView();
     private SelectorController sc;
+    private Pattern currSelectedPattern;
 
     private Label label1, label2, label3, label4, label5,label6,label7,label8,label9,label10;
 
@@ -69,7 +71,7 @@ public class SelectorView implements ViewImpl {
         Button exportDiagram = new Button("Export Diagram");
 
         exportDiagram.setOnAction((ActionEvent e) -> {
-            sc.exportDiagram();
+            sc.exportDiagram(currSelectedPattern);
         });
 
         cb.setItems(model.getPatternsByName());
@@ -82,6 +84,8 @@ public class SelectorView implements ViewImpl {
 
                 int index = newValue.intValue();
                 sc.setLabel(getLabels(), index, model);
+                currSelectedPattern = sc.getPattern(index, model);
+
                 imgview.setImage(sc.getImage(index, model));
             }
         });
