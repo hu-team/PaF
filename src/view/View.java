@@ -23,7 +23,7 @@ public class View  {
 
         // VBox
         vbox = new VBox();
-        vbox.getChildren().addAll(MenuBarView.getMenuBarView(), tabPane);
+        vbox.getChildren().addAll(MenuBarView.getMenuBarView(stage), tabPane);
 
         //BorderPane
         borderPane = new BorderPane();
