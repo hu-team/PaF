@@ -81,7 +81,6 @@ public class SelectorView implements ViewImpl {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 
-
                 int index = newValue.intValue();
                 sc.setLabel(getLabels(), index, model);
                 currSelectedPattern = sc.getPattern(index, model);
