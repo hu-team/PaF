@@ -1,7 +1,6 @@
 package component;
 
 import com.google.gson.stream.JsonReader;
-import com.sun.org.apache.xalan.internal.xsltc.compiler.Pattern;
 import controller.PatternController;
 import javafx.scene.control.TextField;
 import model.Model;
@@ -75,7 +74,7 @@ public class JSONImportAdapter implements Import {
                     textField6.setText(file.nextString());
 
                 } else {
-                    file.skipValue(); //avoid some unhandle events
+                    file.skipValue(); //avoid some unhandled events
                 }
             }
 

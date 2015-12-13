@@ -12,11 +12,9 @@ import model.Model;
 import java.io.File;
 
 public class MenuBarView {
-    //private MenuBarController mbc;
     private JSONImportAdapter jsonia;
 
     public MenuBarView(Model model) {
-        //mbc = new MenuBarController();
         jsonia = new JSONImportAdapter(model);
     }
 

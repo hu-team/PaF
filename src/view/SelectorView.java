@@ -23,7 +23,7 @@ public class SelectorView implements ViewImpl {
     private VBox items, v1, v2, v3, v4, v5, leftbox, rightbox;
     private Tab tab;
     private Model model;
-    private HBox mainbox = new HBox();
+    private HBox mainbox;
     private ImageView imgview = new ImageView();
     private SelectorController sc;
     private Pattern currSelectedPattern;
@@ -33,17 +33,19 @@ public class SelectorView implements ViewImpl {
     public SelectorView(String name, Model model) {
         this.name = name;
         this.model = model;
-        items = new VBox();
-        leftbox = new VBox();
-        rightbox = new VBox();
-        sc = new SelectorController();
         this.initObj();
+        sc = new SelectorController();
         tab = new Tab(name);
         tab.setContent(this.viewItems());
         tab.setClosable(false);
     }
 
     public void initObj() {
+        this.initLabels();
+        this.initBoxes();
+    }
+
+    public void initLabels() {
         //Label 1 [Name]
         label1 = new Label("Naam");
         label2 = new Label("");
@@ -63,6 +65,19 @@ public class SelectorView implements ViewImpl {
         //Label 5 [Solution]
         label9 = new Label("Solution");
         label10 = new Label("");
+    }
+
+    public void initBoxes() {
+        v1 = new VBox();
+        v2 = new VBox();
+        v3 = new VBox();
+        v4 = new VBox();
+        v5 = new VBox();
+
+        items = new VBox();
+        leftbox = new VBox();
+        rightbox = new VBox();
+        mainbox = new HBox();
     }
 
     @Override
@@ -136,12 +151,6 @@ public class SelectorView implements ViewImpl {
 
     public List<VBox> getVBoxes() {
         List<VBox> vBoxes = new ArrayList<>();
-
-        v1 = new VBox();
-        v2 = new VBox();
-        v3 = new VBox();
-        v4 = new VBox();
-        v5 = new VBox();
 
         //VBox 1 [Name]
         v1.getChildren().addAll(getLabels().get(0), getLabels().get(1));
