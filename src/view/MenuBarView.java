@@ -24,7 +24,6 @@ public class MenuBarView {
 
         // File tab
         Menu menuFile = new Menu("File");
-        MenuItem menuItemA = new MenuItem("Save As");
         MenuItem menuItemD = new MenuItem("Import");
 
         menuItemD.setOnAction((ActionEvent e) -> {
@@ -41,7 +40,7 @@ public class MenuBarView {
             }
         });
 
-        menuFile.getItems().addAll(menuItemA, menuItemD);
+        menuFile.getItems().addAll(menuItemD);
 
         menuBar.getMenus().addAll(menuFile);
 
