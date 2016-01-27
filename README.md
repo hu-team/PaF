@@ -1,2 +1,2 @@
 # PaF
-# Test push from Intellij
+School project
